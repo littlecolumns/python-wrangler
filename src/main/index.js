@@ -77,7 +77,7 @@ function createWindow () {
 
   mainWindow = new BrowserWindow({
     height: height * 0.80,
-    width: width * 0.90,
+    width: width * 0.75,
     title: 'Python Wrangler'
   })
 
