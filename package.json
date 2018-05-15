@@ -1,6 +1,6 @@
 {
   "name": "python-wrangler",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Jonathan Soma <jonathan.soma@gmail.com>",
   "description": "Clean up all those Pythons crawling around your computer",
   "license": "mit",
