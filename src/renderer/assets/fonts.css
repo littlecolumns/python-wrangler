@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Inconsolata-webfont';
+    src: url('fonts/inconsolata-webfont.woff2') format('woff2'),
+         url('fonts/inconsolata-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
