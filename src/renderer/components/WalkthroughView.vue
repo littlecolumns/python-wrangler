@@ -51,7 +51,14 @@
       v-bind:refresher="updatePyenv"
       v-bind:loading="isLoading('PYENVS')"
       v-bind:completed="isWindows || (pyenvHasAThree && pyenvActivated)">
-      <PyenvStep v-if="!isWindows" slot="step" :pyenv="pyenv" :pyenvs="pyenvs" :pyenvActivated="pyenvActivated" :pyenvHasAThree="pyenvHasAThree"></PyenvStep>
+      <PyenvStep v-if="!isWindows"
+        slot="step"
+        :pyenv="pyenv"
+        :pyenvs="pyenvs"
+        :pyenvActivated="pyenvActivated"
+        :pyenvHasAThree="pyenvHasAThree"
+        :defaultPyenvVersion="defaultPyenvVersion">
+      </PyenvStep>
       <div v-else slot='step' class='content'>
         <p>You're using Windows, so you don't need pyenv! You use the <a href="https://docs.python.org/3/using/windows.html#python-launcher-for-windows">Python Launcher</a>, which comes with Python 3.</p>
       </div>
@@ -175,13 +182,19 @@ export default {
     pyenvActivated () {
       return this.$store.state.pyenv_activated
     },
+    defaultPyenvVersion () {
+      if (this.pyenv) {
+        return this.pyenv.default_python_version
+      } else {
+        return null
+      }
+    },
     pyenvHasAThree () {
-      if (!this.pyenv) {
+      try {
+        return this.defaultPyenvVersion.indexOf('3') === 0
+      } catch (err) {
         return false
       }
-      return this.pyenv.python_versions.find((version) => {
-        return version[0] === '3'
-      })
     },
     pythons () {
       if (!this.$store.state.pythons) {
