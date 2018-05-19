@@ -86,6 +86,7 @@ export default {
       reader.onload = (e) => {
         let everything = JSON.parse(e.target.result)
         this.$store.replaceState(everything)
+        this.$store.dispatch('lock')
       }
       reader.readAsText(file)
     },

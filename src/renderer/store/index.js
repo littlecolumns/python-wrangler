@@ -29,6 +29,7 @@ export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   plugins: [asyncWatcher],
   state: {
+    locked: false,
     pythons: null,
     pyenv: null,
     pyenvs: null,
@@ -40,6 +41,9 @@ export default new Vuex.Store({
   },
   mutations: {
     FETCH_PYTHONS (state, pythons) {
+      if (state.locked) {
+        return
+      }
       pythons.sort((a, b) => {
         if (b.default_commands.length === a.default_commands.length) {
           // return b.ctime - a.ctime
@@ -57,6 +61,9 @@ export default new Vuex.Store({
       state.pythons = pythons
     },
     FETCH_PACKAGES (state, data) {
+      if (state.locked) {
+        return
+      }
       var match = state.pythons.find((python) => {
         return python.path === data.path
       })
@@ -64,6 +71,9 @@ export default new Vuex.Store({
       match.package_overcount = data.package_overcount
     },
     FETCH_PYENVS (state, data) {
+      if (state.locked) {
+        return
+      }
       state.pyenv_activated = data.activated
       state.pyenvs = data.pyenvs
       state.pyenv = data.pyenvs.find((pyenv) => {
@@ -71,18 +81,27 @@ export default new Vuex.Store({
       })
     },
     FETCH_PIPENVS (state, data) {
+      if (state.locked) {
+        return
+      }
       state.pipenvs = data.pipenvs
       state.pipenv = data.pipenvs.find((pipenv) => {
         return pipenv.default_commands.indexOf('pipenv') !== -1 || pipenv.default_commands.indexOf('pipenv.exe') !== -1
       })
     },
     FETCH_JUPYTERS (state, data) {
+      if (state.locked) {
+        return
+      }
       state.jupyters = data.jupyters
       state.jupyter = data.jupyters.find((jupyter) => {
         return jupyter.default_commands.indexOf('jupyter') !== -1 || jupyter.default_commands.indexOf('jupyter.exe') !== -1
       })
     },
     FETCH_SYSTEM (state, data) {
+      if (state.locked) {
+        return
+      }
       state.system = data.system
     },
     PENDING_DATA (state, type) {
@@ -93,13 +112,13 @@ export default new Vuex.Store({
       copy.splice(state.pending.indexOf(type), 1)
       state.pending = copy
     },
-    IMPORT (state, data) {
-      state = data
+    LOCK (state) {
+      state.locked = true
     }
   },
   actions: {
-    importData ({ commit }, data) {
-      commit('IMPORT', data)
+    lock ({ commit }, data) {
+      commit('LOCK', data)
     },
     pendingData ({ commit }, type) {
       commit('PENDING_DATA', type)
@@ -107,7 +126,10 @@ export default new Vuex.Store({
     completedData ({ commit }, type) {
       commit('COMPLETED_DATA', type)
     },
-    fetchPythons ({ commit }) {
+    fetchPythons ({ commit, state }) {
+      if (state.locked) {
+        return Promise.resolve()
+      }
       return new Promise((resolve, reject) => {
         ipcRenderer.once(`get-pythons`, (event, data) => {
           commit('FETCH_PYTHONS', data.pythons)
@@ -116,7 +138,10 @@ export default new Vuex.Store({
         ipcRenderer.send(`get-pythons`)
       })
     },
-    fetchPyenvs ({ commit }) {
+    fetchPyenvs ({ commit, state }) {
+      if (state.locked) {
+        return Promise.resolve()
+      }
       return new Promise((resolve, reject) => {
         ipcRenderer.once(`get-pyenvs`, (event, data) => {
           commit('FETCH_PYENVS', data)
@@ -125,7 +150,10 @@ export default new Vuex.Store({
         ipcRenderer.send(`get-pyenvs`)
       })
     },
-    fetchPipenvs ({ commit }) {
+    fetchPipenvs ({ commit, state }) {
+      if (state.locked) {
+        return Promise.resolve()
+      }
       return new Promise((resolve, reject) => {
         ipcRenderer.once(`get-pipenvs`, (event, data) => {
           commit('FETCH_PIPENVS', data)
@@ -134,7 +162,10 @@ export default new Vuex.Store({
         ipcRenderer.send(`get-pipenvs`)
       })
     },
-    fetchJupyters ({ commit }) {
+    fetchJupyters ({ commit, state }) {
+      if (state.locked) {
+        return Promise.resolve()
+      }
       return new Promise((resolve, reject) => {
         ipcRenderer.once(`get-jupyters`, (event, data) => {
           commit('FETCH_JUPYTERS', data)
@@ -143,7 +174,10 @@ export default new Vuex.Store({
         ipcRenderer.send(`get-jupyters`)
       })
     },
-    fetchSystem ({ commit }) {
+    fetchSystem ({ commit, state }) {
+      if (state.locked) {
+        return Promise.resolve()
+      }
       return new Promise((resolve, reject) => {
         ipcRenderer.once(`get-system`, (event, data) => {
           commit('FETCH_SYSTEM', data)
@@ -152,7 +186,10 @@ export default new Vuex.Store({
         ipcRenderer.send(`get-system`)
       })
     },
-    fetchPackages ({ commit }, pythonPath) {
+    fetchPackages ({ commit, state }, pythonPath) {
+      if (state.locked) {
+        return Promise.resolve()
+      }
       return new Promise((resolve, reject) => {
         /* The listener responds to every set-packages, so
         we need to make sure we're listening for the right one
