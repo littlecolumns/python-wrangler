@@ -58,8 +58,13 @@ export default {
       }
   }
 
+  .main-body {
+    padding-right: 1.5rem
+  }
+
   .main-body h1.title {
     margin-left: -12px;
+    margin-right: -12px;
     padding: 15px;
     font-size: 1.5em;
     background: $lightgrey;
