@@ -20,7 +20,10 @@
         </router-link>
       </div>
       <div class="main has-text-centered">
-        <div v-if="isLoading" class="button is-small is-warning is-loading">
+        <div v-if="isLocked" class="button is-small is-dark">
+          <font-awesome-icon :icon="['fas', 'lock']" /> &nbsp; Locked
+        </div>
+        <div v-else-if="isLoading" class="button is-small is-warning is-loading">
           Loading...
         </div>
         <div v-else class="button is-small is-warning" v-on:click="refresh">
@@ -52,6 +55,9 @@ export default {
     FontAwesomeIcon
   },
   computed: {
+    isLocked () {
+      return this.$store.state.locked
+    },
     isLoading () {
       return this.$store.state.pending.length > 0
     },
