@@ -207,6 +207,10 @@ export default {
       }
 
       // Let's go through every kernel and see if it exists
+      if (!this.jupyter.kernels) {
+        return false
+      }
+
       for (var name in this.jupyter.kernels.kernelspecs) {
         var kernel = this.jupyter.kernels.kernelspecs[name]
         var path = kernel.spec.argv[0]
