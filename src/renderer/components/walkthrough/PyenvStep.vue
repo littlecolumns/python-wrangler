@@ -3,7 +3,7 @@
     <template v-if="pyenv">
       <p><strong>Great!</strong> pyenv was successfully installed. <template v-if="pyenvHasAThree">Now <strong>{{ pyenvs[0].default_python_version }}</strong> is your default Python.</template></p>
       <template v-if="!pyenvHasAThree">
-        <p>Now you need to <strong>tell pyenv to install Python 3</strong>. We'll use 3.6.4 here, but you can use any other version if you have a preference.</p>
+        <p>Now you need to <strong>tell pyenv to install Python 3</strong>. We'll use 3.6.5 here, but you can use any other version if you have a preference.</p>
         <pre><code>pyenv install 3.6.5
 pyenv global 3.6.5</code></pre>
       </template>
