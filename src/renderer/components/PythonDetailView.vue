@@ -120,9 +120,6 @@ export default {
       if (!this.jupyter || !this.python || !this.jupyter.kernels) {
         return null
       }
-      if () {
-        return null
-      }
       for (var key in this.jupyter.kernels.kernelspecs) {
         var spec = this.jupyter.kernels.kernelspecs[key].spec
         var kernelpath = spec.argv[0]
