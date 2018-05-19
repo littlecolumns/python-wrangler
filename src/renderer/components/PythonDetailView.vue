@@ -117,7 +117,10 @@ export default {
       return this.$store.state.jupyter
     },
     kernelSpec () {
-      if (!this.jupyter || !this.python) {
+      if (!this.jupyter || !this.python || !this.jupyter.kernels) {
+        return null
+      }
+      if () {
         return null
       }
       for (var key in this.jupyter.kernels.kernelspecs) {
