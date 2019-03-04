@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div v-if="jupyterKernelInstalled">
-      <p><strong>Great!</strong> You should use the <strong>{{ jupyterKernelInstalled.spec.display_name }}</strong> kernel when starting up a new notebook.</p>
+      <p><strong>Great!</strong> You can use the <strong>{{ jupyterKernelInstalled.spec.display_name }}</strong> kernel when starting up a new notebook.</p>
     </div>
     <template v-else>
       <p>We're going to install Jupyter and allow it to use our default Python.</p>
