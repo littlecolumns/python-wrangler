@@ -6,9 +6,9 @@
   "description": "Clean up all those Pythons crawling around your computer",
   "license": "mit",
   "main": "./dist/electron/main.js",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/littlecolumns/python-wrangler.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/littlecolumns/python-wrangler.git"
   },
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
