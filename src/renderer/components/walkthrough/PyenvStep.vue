@@ -3,9 +3,9 @@
     <template v-if="pyenv">
       <p><strong>Great!</strong> pyenv was successfully installed. Currently <strong>{{ defaultPyenvVersion }}</strong> is your default Python.</p>
       <template v-if="!pyenvHasAThree">
-        <p>We need to <strong>tell pyenv to install Python 3</strong>. We'll use 3.6.5 here, but you can use any other version if you have a preference.</p>
-        <pre><code>pyenv install 3.6.5
-pyenv global 3.6.5</code></pre>
+        <p>We need to <strong>tell pyenv to install Python 3</strong>. We'll use 3.7.1 here, but you can use any other version if you have a preference.</p>
+        <pre><code>pyenv install 3.7.1
+pyenv global 3.7.1</code></pre>
       </template>
       <template v-if="!pyenvActivated">
         <p><strong>pyenv is installed, but not activated!</strong> This means you won't get your cool new Pythons automatically. If you just installed/uninstalled something, try to click Refresh to see if this error goess away.
