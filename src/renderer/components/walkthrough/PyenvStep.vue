@@ -18,8 +18,20 @@ pyenv global 3.7.1</code></pre>
 pyenv global 3.7.1</code></pre>
           <p><strong>Note:</strong> If you change your default Python this you'll need to reinstall all your packages.</p>
         </template>
+        <p>You can find more about pyenv <a href="https://github.com/pyenv/pyenv">here</a>, or just read the <a href="https://github.com/pyenv/pyenv/blob/master/COMMANDS.md">command reference</a>.</p>
       </template>
       <template v-if="!pyenvActivated">
+        <p><span class="button is-small" @click='toggleTroubleshooting()'>
+          <span v-if="!showTroubleshooting">+ Show troubleshooting tips</span>
+          <span v-else>- Hide troubleshooting</span>
+        </span></p>
+        <template v-if="showTroubleshooting" class="troubleshooting">
+          <p>If you're having trouble on <strong>OS X Mojave 10.14</strong>, it's because we need to manually install some headers first. To fix this, run the following comamnd:</p>
+          <pre><code>sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /</code></pre>
+          <p>If you're using <strong>version 10.13 or earlier</strong>, you might be able to fix it with this command:</p>
+          <pre><code>xcode-select --install</code></pre>
+        </template>
+
         <p><strong>pyenv is installed, but not activated!</strong> This means you won't get your cool new Pythons automatically. If you just installed/uninstalled something, try to click Refresh to see if this error goess away.
 
         <p>To set it up to activate, paste the following code into the command line.</p>
@@ -28,9 +40,10 @@ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
 echo -e 'if command -v pyenv 1>/dev/null 2>&amp;1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile</code></pre>
         <p>Once you do that, your computer will use pyenv Pythons instead of the other ones on your system.</p>
       </template>
-      <p>You can find more about pyenv <a href="https://github.com/pyenv/pyenv">here</a>, or just read the <a href="https://github.com/pyenv/pyenv/blob/master/COMMANDS.md">command reference</a>.</p>
     </template>
-    <installerView v-else></installerView>
+    <template v-else>
+      <installerView></installerView>
+    </template>
   </div>
 </template>
 
@@ -44,12 +57,16 @@ export default {
   },
   data () {
     return {
-      showInstr: false
+      showInstr: false,
+      showTroubleshooting: false
     }
   },
   methods: {
     toggleInstructions () {
       this.showInstr = !this.showInstr
+    },
+    toggleTroubleshooting () {
+      this.showTroubleshooting = !this.showTroubleshooting
     }
   }
 }
