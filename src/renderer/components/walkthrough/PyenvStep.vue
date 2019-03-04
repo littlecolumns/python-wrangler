@@ -26,10 +26,10 @@ pyenv global 3.7.1</code></pre>
           <span v-else>- Hide troubleshooting</span>
         </span></p>
         <template v-if="showTroubleshooting" class="troubleshooting">
-          <p>If you're having trouble on <strong>OS X Mojave 10.14</strong>, it's because we need to manually install some headers first. To fix this, run the following comamnd:</p>
+          <p>If you're having trouble on <strong>OS X 10.14 Mojave</strong>, it's because we need to manually install some headers first. To fix this, run the following comamnd:</p>
           <pre><code>sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
 brew reinstall zlib</code></pre>
-          <p>If you're using <strong>version 10.13 or earlier</strong>, you might be able to fix it with this command:</p>
+          <p>If you're using <strong>OS X 10.13 or earlier</strong>, you might be able to fix it with this command:</p>
           <pre><code>xcode-select --install
 brew reinstall zlib</code></pre>
         </template>
