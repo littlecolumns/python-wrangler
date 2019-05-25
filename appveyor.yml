@@ -1,6 +1,7 @@
 branches:
   only:
     - master
+    - /v\d*\.\d*\.\d*/
 
 image: Visual Studio 2017
 platform:
