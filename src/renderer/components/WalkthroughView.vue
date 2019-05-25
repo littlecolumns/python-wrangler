@@ -86,7 +86,7 @@
       title="Step 6: Finishing up"
       v-bind:conditional="() => true">
       <div class="content" slot="step">
-        <p v-if="isWindows">Since you're on Windows, if you're planning on doing anything science-y, maps-y, or data-y, you probably want to install <a href="http://landinghub.visualstudio.com/visual-cpp-build-tools">Visual Studio Build Tools</a>. This allows you compile Python packages on your machine.</p>
+        <p v-if="isWindows">Since you're on Windows, if you're planning on doing anything science-y, maps-y, or data-y, you probably want to install <a href="https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017">Visual Studio Build Tools</a>. This allows you compile Python packages on your machine.</p>
         <p>Now that you're done, check out <a href="http://littlecolumns.com/tools/python-wrangler-notes">Python Wrangler notes</a> for tips on how to use your new system. It includes tips on virtual environments, switching Python versions, and anything else.</p>
       </div>
     </Step>
