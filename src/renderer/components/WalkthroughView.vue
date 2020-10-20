@@ -7,7 +7,7 @@
         <li class="is-small"><strong>Python 3</strong> from python.org, since some software assumes it's installed</li>
         <li><strong>Pipenv</strong> for modern virtual environment management</li>
         <li><strong>Jupyer Notebook</strong>, pointing to the Python installed by pyenv</li>
-        <li><span class="tag is-warning">OS X only</span> <strong>Pyenv</strong> to switch between different (global) Python versions, like 3.6 vs 2.7</li>
+        <li><span class="tag is-warning">OS X only</span> <strong>Pyenv</strong> to switch between different (global) Python versions, like 38 vs 2.7</li>
       </ul>
       <p>If you'd like more details about the software: <a href="https://www.python.org/">python.org</a>, <a href='https://github.com/pyenv/pyenv'>pyenv</a>, <a href='https://docs.pipenv.org/'>pipenv</a>, <a class="is-small" href="http://jupyter.org/">Jupyter Notebook</a></p>
     </div>

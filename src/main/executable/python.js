@@ -65,7 +65,11 @@ class PythonExecutable extends Executable {
     let detectives = [
       ['version', 'anaconda', 'Anaconda'],
       ['version', 'anaconda', 'Continuum'],
+      ['path', 'pythonorg', '/Library/Frameworks/Python.framework/Versions/2.7'],
       ['path', 'pythonorg', '/Library/Frameworks/Python.framework/Versions/3.6'],
+      ['path', 'pythonorg', '/Library/Frameworks/Python.framework/Versions/3.7'],
+      ['path', 'pythonorg', '/Library/Frameworks/Python.framework/Versions/3.8'],
+      ['path', 'pythonorg', '/Library/Frameworks/Python.framework/Versions/3.9'],
       ['path', 'pipenv', 'local/share/virtualenvs'],
       ['path', 'canopy', 'Enthought'],
       ['path', 'canopy', 'Canopy'],
