@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     shellStartupFile () {
-      if (!this.$store.state.system || this.$store.state.system.release.split('.')[0] < 19) {
+      if (!this.$store.state.system || this.$store.state.system.shell.indexOf('bash') !== -1) {
         return '~/.bash_profile'
       } else {
         return '~/.zshrc'

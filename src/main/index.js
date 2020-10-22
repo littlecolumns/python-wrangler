@@ -122,7 +122,8 @@ function setupCommunication () {
       system: {
         'platform': os.platform(),
         'type': os.type(),
-        'release': os.release()
+        'release': os.release(),
+        'shell': process.env.SHELL
       }
     })
   })
