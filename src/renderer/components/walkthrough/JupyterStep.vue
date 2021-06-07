@@ -8,7 +8,7 @@
       <p>We're going to install Jupyter and allow it to use our default Python.</p>
       <p><strong>Paste each line below into the command line</strong>, hitting enter after each. Read below if you want to know what each line does.</p>
       <template v-if="!isWindows">
-        <pre><code>eval "$(pyenv init -)"
+        <pre><code>eval "$(pyenv init --path)"
 python -m pip install jupyter
 python -m ipykernel install --user</code></pre>
         <p>These commands do the following:</p>
