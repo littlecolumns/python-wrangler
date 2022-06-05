@@ -9,7 +9,7 @@
       <p><strong>Paste each line below into the command line</strong>, hitting enter after each. Read below if you want to know what each line does.</p>
       <template v-if="!isWindows">
         <pre><code>eval "$(pyenv init --path)"
-python -m pip install jupyter
+python -m pip install notebook
 python -m ipykernel install --user</code></pre>
         <p>These commands do the following:</p>
         <ul>
@@ -19,7 +19,7 @@ python -m ipykernel install --user</code></pre>
         </ul>
       </template>
       <template v-else>
-        <pre><code>python -m pip install jupyter
+        <pre><code>python -m pip install notebook
 python -m ipykernel install --user</code></pre>
         <p>These commands do the following:</p>
         <ul>

@@ -4,7 +4,7 @@
       <strong>You're all set!</strong> You don't have any Pythons to remove.
     </p>
     <p v-else>
-      We found <strong>{{ unwantedPythons.length }} unneeded Python installations</strong>. We recommend removing anything you don't need &mdash; let's make a list.
+      We found <strong>{{ unwantedPythons.length }} unneeded Python installations</strong>. We recommend removing anything you don't need &mdash; let's make a list. (but if you'd rather not remove them, it's probably also okay!)
     </p>
 
     <table class="table" v-if="unwantedPythons.length > 0">
